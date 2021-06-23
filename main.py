@@ -99,6 +99,3 @@ def crawling_posts(urls):
 for url_m in URL_M_DICT.values():
     posts_recursive(url_m, m)
 crawling_posts(list_link)
-                                    ###                                      ###
-                                    ###   VYMAZAT PRIHLASOVACIE UDAJE !!!!   ### 
-                                    ###                                      ###
