@@ -7,22 +7,28 @@ import time
 from selenium.webdriver.chrome.options import Options
 from login_info import mail
 from login_info import pasw
+from databatase import create_db
+from databatase import insert_db
 '''
-Using selenium module for login in fb account for crawling. 
+Using selenium module for login in fb account for crawling.
 '''
 # PATH for chromedriver on local driver.
 # Can be different on different machines.
 # Change accordingly.
 PATH = r'C:/Program Files (x86)/chromedriver.exe'
+
 # FB URL for login.
 # FB URL Mobile version for crawling.
 URL = 'https://www.facebook.com'
-
+try:
+    create_db()
+except Exception:
+    pass
 '''
-Selenium driver login. 
+Selenium driver login.
 '''
 chrome_options = Options()
-# chrome_options.add_argument("--headless")
+#chrome_options.add_argument("--headless")
 chrome_options.add_argument("--disable-notifications")
 driver = webdriver.Chrome(PATH, options=chrome_options)
 driver.get(URL)
@@ -44,9 +50,11 @@ URL_M_DICT = {
     'Prenájom Bytu Bratislava': 'https://mbasic.facebook.com/groups/673598812677373/',
     'Bývanie a prenájom BA': 'https://mbasic.facebook.com/groups/ByvanieaprenajomBA/'
 }
+
 class_variable = {
     1: 'cw cy di', 2: 'da dc dm', 3: 'db dd dn', 4: 'de df dg'
 }
+
 list_link = []
 m = 0
 
@@ -61,7 +69,7 @@ def posts_recursive(url_, m):
         for value in class_variable.values():
             try:
                 posts = soup.find_all('article', class_=value)
-            except:
+            except Exception:
                 continue
 
             for post in posts:
@@ -74,12 +82,14 @@ def posts_recursive(url_, m):
             page = f"https://mbasic.facebook.com/{html['href']}"
 
             posts_recursive(page, m)
-        except:
+        except Exception:
             pass
 
 
 ban_words = ('hľadám', 'hladam', 'hlad')
-allow_words = ('Petržalka', 'Petrzalka', 'petrzalka', 'petržalka', 'Petr', 'petr')
+allow_words = ('Petržalka', 'Petrzalka',
+               'petrzalka', 'petržalka',
+               'Petr', 'petr')
 
 
 def crawling_posts(urls):
@@ -91,10 +101,13 @@ def crawling_posts(urls):
         for t in text_:
             for allow in allow_words:
                 if allow in t.text:
+                    post_n = post.replace('mbasic', 'www')
                     print(t.text)
                     print(' ')
-                    print(post)
+                    print(post_n)
                     print('--------------------------------------------')
+                    insert_db(t.text, post_n)
+
 
 for url_m in URL_M_DICT.values():
     posts_recursive(url_m, m)
