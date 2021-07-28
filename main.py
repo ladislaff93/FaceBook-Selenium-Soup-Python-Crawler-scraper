@@ -22,13 +22,15 @@ PATH = r'C:/Program Files (x86)/chromedriver.exe'
 URL = 'https://www.facebook.com'
 try:
     create_db()
+    print('Database created!')
 except Exception:
+    print('Database already exist!')
     pass
 '''
 Selenium driver login.
 '''
 chrome_options = Options()
-#chrome_options.add_argument("--headless")
+chrome_options.add_argument("--headless")
 chrome_options.add_argument("--disable-notifications")
 driver = webdriver.Chrome(PATH, options=chrome_options)
 driver.get(URL)
@@ -107,6 +109,7 @@ def crawling_posts(urls):
                     print(post_n)
                     print('--------------------------------------------')
                     insert_db(t.text, post_n)
+                    print('Inserted into Database!')
 
 
 for url_m in URL_M_DICT.values():

@@ -5,7 +5,7 @@ def create_db():
     conn = sqlite3.connect('database.db')
     conn.execute('''CREATE TABLE UBYTOVANIE
                     (ID INTEGER PRIMARY KEY AUTOINCREMENT,
-                    TEXT INZERATU TEXT,
+                    INZERAT TEXT,
                     LINK TEXT);
                 ''')
 
@@ -13,7 +13,7 @@ def create_db():
 def insert_db(text, link):
     conn = sqlite3.connect('database.db')
     conn.execute(f'''INSERT INTO UBYTOVANIE
-                     (TEXT INZERATU, LINK)\
+                     (INZERAT, LINK)\
                      VALUES({text},{link});''')
     conn.commit()
     conn.close()
