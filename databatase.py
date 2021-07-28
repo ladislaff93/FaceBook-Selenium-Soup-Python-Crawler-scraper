@@ -4,16 +4,15 @@ import sqlite3
 def create_db():
     conn = sqlite3.connect('database.db')
     conn.execute('''CREATE TABLE UBYTOVANIE
-                    (ID INTEGER PRIMARY KEY AUTOINCREMENT,
-                    INZERAT TEXT,
-                    LINK TEXT);
+                    (INZERAT TEXT,
+                     LINK TEXT);
                 ''')
 
 
 def insert_db(text, link):
+    info = [text, link]
     conn = sqlite3.connect('database.db')
-    conn.execute(f'''INSERT INTO UBYTOVANIE
-                     (INZERAT, LINK)\
-                     VALUES({text},{link});''')
+    conn.execute('''INSERT INTO UBYTOVANIE
+                    VALUES(?,?)''', info)
     conn.commit()
     conn.close()

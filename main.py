@@ -109,6 +109,7 @@ def crawling_posts(urls):
                     print(post_n)
                     print('--------------------------------------------')
                     insert_db(t.text, post_n)
+                    print('')
                     print('Inserted into Database!')
 
 
