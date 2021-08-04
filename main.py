@@ -50,11 +50,17 @@ URL_M_DICT = {
     'Bývanie a prenájom Bratislava': 'https://mbasic.facebook.com/groups/1583434415266071/',
     'Bratislava - Bývanie, Spolubývanie, nájom, pronájom, podnájom, byt': 'https://mbasic.facebook.com/groups/123700788304715/',
     'Prenájom Bytu Bratislava': 'https://mbasic.facebook.com/groups/673598812677373/',
-    'Bývanie a prenájom BA': 'https://mbasic.facebook.com/groups/ByvanieaprenajomBA/'
-}
+    'Bývanie a prenájom BA': 'https://mbasic.facebook.com/groups/ByvanieaprenajomBA/',
+    '‎Podnájom, prenájom, predaj ubytko Bratislava ┃ BratislavaDen.sk': 'https://mbasic.facebook.com/groups/prenajom.predaj.bratislava/',
+    'PRENÁJOM / PODNÁJOM/ / UBYTOVANIE - BRATISLAVA': 'https://www.facebook.com/groups/118942498712191/',
+    'PRENAJOM A BÝVANIE PRIAMO NA MAJITELA (BEZ REALITKU) BRATISLAVA': 'https://www.facebook.com/groups/195337991035144/',
+    'Prenájom bez realitky Bratislava - Realhome.sk': 'https://www.facebook.com/groups/198979500594416/',
+    'Bývanie Bratislava - Byty, Domy, Pozemky - Predaj, Kúpa, Prenájom': 'https://www.facebook.com/groups/498952127151491/',
+    'PRENÁJOM a PODNÁJOM v BA': 'https://www.facebook.com/groups/PRENAJOMaPODNAJOMvBA/'
+    }
 
 class_variable = {
-    1: 'cw cy di', 2: 'da dc dm', 3: 'db dd dn', 4: 'de df dg'
+    1: 'cw cy di', 2: 'da dc dm', 3: 'db dd dn', 4: 'de df dg', 5: 'dc dd de'
 }
 
 list_link = []
